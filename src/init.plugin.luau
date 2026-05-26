@@ -13,32 +13,42 @@ const pluginToolbarButton = toolbar:CreateButton(
 )
 pluginToolbarButton.ClickableWhenViewportHidden = true
 
--- Convert selected HopperBin instances to Tool when the plugin button is clicked
+-- Convert selected HopperBin to Tool when the plugin button is clicked
 const function onClick()
-	for _, hopper in Selection:Get() do
-		if hopper:IsA("HopperBin") then
-			const recording = ChangeHistoryService:TryBeginRecording("Convert selected HopperBin to Tool")
-			if not recording then
-				return
-			end
-
-			const tool = Instance.new("Tool")
-			tool.Name = hopper.Name
-			tool.CanBeDropped = false
-			tool.TextureId = hopper.TextureId
-			tool.RequiresHandle = false
-
-			for _, child in hopper:GetChildren() do
-				child.Parent = tool
-			end
-
-			tool.Parent = hopper.Parent
-			hopper.Parent = nil
-			Selection:Add({ tool })
-
-			ChangeHistoryService:FinishRecording(recording, Enum.FinishRecordingOperation.Commit)
+	local hoppers = {}
+	for _, part in Selection:Get() do
+		if part:IsA("HopperBin") then
+			hoppers[#hoppers + 1] = part
 		end
 	end
+
+	if #hoppers < 1 then
+		-- Nothing to do.
+		return
+	end
+
+	local recording = ChangeHistoryService:TryBeginRecording("Set selection to neon")
+	if not recording then
+		return
+	end
+
+	for _, hopper in hoppers do
+		const tool = Instance.new("Tool")
+		tool.Name = hopper.Name
+		tool.CanBeDropped = false
+		tool.TextureId = hopper.TextureId
+		tool.RequiresHandle = false
+
+		for _, child in hopper:GetChildren() do
+			child.Parent = tool
+		end
+
+		tool.Parent = hopper.Parent
+		hopper.Parent = nil
+		Selection:Add({ tool })
+	end
+
+	ChangeHistoryService:FinishRecording(recording, Enum.FinishRecordingOperation.Commit)
 end
 pluginToolbarButton.Click:Connect(onClick)
 
