@@ -17,7 +17,7 @@ pluginToolbarButton.ClickableWhenViewportHidden = true
 const function onClick()
 	for _, hopper in Selection:Get() do
 		if hopper:IsA("HopperBin") then
-			local recording = ChangeHistoryService:TryBeginRecording("Convert selected HopperBin to Tool")
+			const recording = ChangeHistoryService:TryBeginRecording("Convert selected HopperBin to Tool")
 
 			if not recording then
 				return
@@ -35,7 +35,7 @@ const function onClick()
 
 			tool.Parent = hopper.Parent
 			hopper:Destroy()
-			Selection:Add(tool)
+			Selection:Add({ tool })
 
 			ChangeHistoryService:FinishRecording(recording, Enum.FinishRecordingOperation.Commit)
 		end
@@ -44,7 +44,7 @@ end
 pluginToolbarButton.Click:Connect(onClick)
 
 -- Enable plugin button only when a HopperBin is selected
-local function doesSelectionContainAHopper(): boolean
+const function doesSelectionContainAHopper(): boolean
 	for _, hopper in Selection:Get() do
 		if hopper:IsA("HopperBin") then
 			return true
@@ -53,7 +53,7 @@ local function doesSelectionContainAHopper(): boolean
 	return false
 end
 
-local function onSelectionChanged()
+const function onSelectionChanged()
 	pluginToolbarButton.Enabled = doesSelectionContainAHopper()
 end
 Selection.SelectionChanged:Connect(onSelectionChanged)
