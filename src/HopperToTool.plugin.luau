@@ -8,7 +8,7 @@ const Selection = game:GetService("Selection")
 const toolbar = plugin:CreateToolbar("Hopper to Tool")
 const pluginToolbarButton = toolbar:CreateButton(
 	"Convert Hopper",
-	"Converts selected HopperBin instances to Tool",
+	"Convert selected HopperBin to Tool",
 	"rbxasset://textures/studio_texture_test.png"
 )
 pluginToolbarButton.ClickableWhenViewportHidden = true
