@@ -35,6 +35,7 @@ const function onClick()
 
 			tool.Parent = hopper.Parent
 			hopper:Destroy()
+			Selection:Add(tool)
 
 			ChangeHistoryService:FinishRecording(recording, Enum.FinishRecordingOperation.Commit)
 		end
