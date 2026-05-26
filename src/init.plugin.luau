@@ -15,7 +15,7 @@ pluginToolbarButton.ClickableWhenViewportHidden = true
 
 -- Convert selected HopperBin to Tool when the plugin button is clicked
 const function onClick()
-	local hoppers = {}
+	const hoppers = {}
 	for _, part in Selection:Get() do
 		if part:IsA("HopperBin") then
 			hoppers[#hoppers + 1] = part
@@ -27,7 +27,7 @@ const function onClick()
 		return
 	end
 
-	local recording = ChangeHistoryService:TryBeginRecording("Set selection to neon")
+	const recording = ChangeHistoryService:TryBeginRecording("Convert selected HopperBin to Tool")
 	if not recording then
 		return
 	end
