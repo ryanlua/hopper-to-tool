@@ -9,7 +9,7 @@ const toolbar = plugin:CreateToolbar("Hopper to Tool")
 const pluginToolbarButton = toolbar:CreateButton(
 	"Convert Hopper",
 	"Convert selected HopperBin to Tool",
-	"rbxasset://textures/studio_texture_test.png"
+	"rbxassetid://89061541585294"
 )
 pluginToolbarButton.ClickableWhenViewportHidden = true
 
