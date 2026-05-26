@@ -42,8 +42,8 @@ const function onClick()
 		for _, script in hopper:GetDescendants() do
 			if script:IsA("Script") or script:IsA("ModuleScript") then
 				const content = script.Source
-				local newContent, count = content:gsub("%.%s*[sS]elected%s*:%s*[cC]onnect%s*%(", ".Equipped:Connect(")
-				newContent, count = newContent:gsub("%.%s*[dD]eselected%s*:%s*[cC]onnect%s*%(", ".Unequipped:Connect(")
+				local newContent, count = content:gsub("%s*%.%s*[sS]elected%s*:%s*[cC]onnect%s*%(", ".Equipped:Connect(")
+				newContent, count = newContent:gsub("%s*%.%s*[dD]eselected%s*:%s*[cC]onnect%s*%(", ".Unequipped:Connect(")
 				if count > 0 then
 					script.Source = newContent
 				end
