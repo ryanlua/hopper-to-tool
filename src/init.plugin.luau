@@ -18,7 +18,6 @@ const function onClick()
 	for _, hopper in Selection:Get() do
 		if hopper:IsA("HopperBin") then
 			const recording = ChangeHistoryService:TryBeginRecording("Convert selected HopperBin to Tool")
-
 			if not recording then
 				return
 			end
@@ -34,7 +33,7 @@ const function onClick()
 			end
 
 			tool.Parent = hopper.Parent
-			hopper:Destroy()
+			hopper.Parent = nil
 			Selection:Add({ tool })
 
 			ChangeHistoryService:FinishRecording(recording, Enum.FinishRecordingOperation.Commit)
