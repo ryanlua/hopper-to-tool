@@ -2,6 +2,5 @@
 sourcemap.json
 
 # Builds
-dist/
 *.rbxm
 *.rbxmx
