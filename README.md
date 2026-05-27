@@ -10,7 +10,15 @@ Roblox Studio plugin to help migrate from deprecated [HopperBin](https://create.
 * Convert scripts using HopperBin class methods
   * `HopperBin.Selected` → `Tool.Equipped`
   * `HopperBin.Deselected` → `Tool.Unequipped`
- 
+
+Supports undo and redo. Converted instances are selected after conversion. Works to convert HopperBin instances relying internal scripts.
+
+## Usage
+
+1. Install the Roblox Studio plugin
+2. Select HopperBin instances to convert
+3. Activate the plugin by pressing it's button
+
 ## License
 
 Hopper to Tool is available under the Apache 2.0 license. See [LICENSE.md](LICENSE.md) for details.
