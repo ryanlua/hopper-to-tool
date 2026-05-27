@@ -7,7 +7,8 @@
       "command": "rojo build -p HopperToBin.rbxm",
       "problemMatcher": [],
       "group": {
-        "kind": "build"
+        "kind": "build",
+        "isDefault": true
       }
     },
     {
