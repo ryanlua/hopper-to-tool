@@ -7,10 +7,6 @@ on:
 permissions:
   contents: read
 
-env:
-  OUTPUT_NAME: HopperToTool
-  ROJO_PROJECT: default.project.json
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,11 +22,11 @@ jobs:
       - name: Build Rojo project
         run: |
           mkdir dist
-          rojo build $ROJO_PROJECT --output dist/$OUTPUT_NAME.rbxm
-          rojo build $ROJO_PROJECT --output dist/$OUTPUT_NAME.rbxmx
+          rojo build --output dist/HopperToTool.rbxm
+          rojo build --output dist/HopperToTool.rbxmx
       - name: Archive build files
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ env.OUTPUT_NAME }}
+          name: HopperToTool
           path: dist/
           if-no-files-found: error
