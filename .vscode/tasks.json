@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build plugin",
+      "type": "shell",
+      "command": "rojo build -p HopperToBin.rbxm"
+    },
+    {
+      "label": "Build model",
+      "type": "shell",
+      "command": "mkdir -p dist && rojo build -o dist/HopperToBin.rbxm && rojo build -o dist/HopperToBin.rbxmx"
+    }
+  ]
+}
