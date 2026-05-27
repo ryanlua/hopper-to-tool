@@ -13,7 +13,7 @@
     {
       "label": "Build model",
       "type": "shell",
-      "command": "mkdir -p dist && rojo build -o dist/HopperToBin.rbxm && rojo build -o dist/HopperToBin.rbxmx",
+      "command": "rm -rf dist && mkdir -p dist && rojo build -o dist/HopperToBin.rbxm && rojo build -o dist/HopperToBin.rbxmx",
       "problemMatcher": [],
       "group": {
         "kind": "build"
