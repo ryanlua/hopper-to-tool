@@ -4,12 +4,20 @@
     {
       "label": "Build plugin",
       "type": "shell",
-      "command": "rojo build -p HopperToBin.rbxm"
+      "command": "rojo build -p HopperToBin.rbxm",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build"
+      }
     },
     {
       "label": "Build model",
       "type": "shell",
-      "command": "mkdir -p dist && rojo build -o dist/HopperToBin.rbxm && rojo build -o dist/HopperToBin.rbxmx"
+      "command": "mkdir -p dist && rojo build -o dist/HopperToBin.rbxm && rojo build -o dist/HopperToBin.rbxmx",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build"
+      }
     }
   ]
 }
