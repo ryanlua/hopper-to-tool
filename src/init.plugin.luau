@@ -30,6 +30,11 @@ const function onClick()
 	end
 
 	for _, hopper in hoppers do
+		if hopper.BinType ~= Enum.BinType.Script then
+			warn(`Unable to convert '{hopper}' hopper. Hopper must be a script HopperBin.`)
+			return
+		end
+
 		const tool = Instance.new("Tool")
 		tool.Name = hopper.Name
 		tool.CanBeDropped = false
