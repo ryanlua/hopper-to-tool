@@ -37,15 +37,15 @@ const function onClick()
 		tool.RequiresHandle = false
 
 		-- Convert scripts to tool API
-		for _, script in hopper:GetDescendants() do
-			if script:IsA("Script") or script:IsA("ModuleScript") then
-				const content = script.Source
+		for _, decendantScript in hopper:GetDescendants() do
+			if decendantScript:IsA("Script") or decendantScript:IsA("ModuleScript") then
+				const content = decendantScript.Source
 				local newContent, count =
 					content:gsub("%s*%.%s*[sS]elected%s*:%s*[cC]onnect%s*%(", ".Equipped:Connect(")
 				newContent, count =
 					newContent:gsub("%s*%.%s*[dD]eselected%s*:%s*[cC]onnect%s*%(", ".Unequipped:Connect(")
 				if count > 0 then
-					script.Source = newContent
+					decendantScript.Source = newContent
 				end
 			end
 		end
