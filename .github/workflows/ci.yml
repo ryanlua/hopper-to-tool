@@ -21,12 +21,13 @@ jobs:
         run: selene src/
       - name: Build Rojo project
         run: |
-          mkdir dist
-          rojo build --output dist/HopperToTool.rbxm
-          rojo build --output dist/HopperToTool.rbxmx
+          rojo build --output HopperToTool.rbxm
+          rojo build --output HopperToTool.rbxmx
       - name: Archive build files
         uses: actions/upload-artifact@v7
         with:
           name: HopperToTool
-          path: dist/
+          path: |
+            *.rbxm
+            *.rbxmx
           if-no-files-found: error
