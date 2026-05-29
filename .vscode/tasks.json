@@ -4,7 +4,7 @@
     {
       "label": "Build plugin",
       "type": "shell",
-      "command": "rojo build -p HopperToBin.rbxm",
+      "command": "rojo build --plugin HopperToBin.rbxm",
       "problemMatcher": [],
       "group": {
         "kind": "build",
