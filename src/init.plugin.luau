@@ -57,9 +57,10 @@ const function onClick()
 			end
 		end
 
-		-- Reparent instances to new tool
+		-- Copy scripts to new tool
 		for _, child in hopper:GetChildren() do
-			child.Parent = tool
+			const clone = child:Clone()
+			clone.Parent = tool
 		end
 
 		tool.Parent = hopper.Parent
