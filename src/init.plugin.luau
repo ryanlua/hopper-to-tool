@@ -36,6 +36,7 @@ const function onClick()
 		tool.TextureId = hopper.TextureId
 		tool.RequiresHandle = false
 
+		-- Convert scripts to tool API
 		for _, script in hopper:GetDescendants() do
 			if script:IsA("Script") or script:IsA("ModuleScript") then
 				const content = script.Source
@@ -49,6 +50,7 @@ const function onClick()
 			end
 		end
 
+		-- Reparent instances to new tool
 		for _, child in hopper:GetChildren() do
 			child.Parent = tool
 		end
