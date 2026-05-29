@@ -43,25 +43,25 @@ const function onClick()
 		tool.TextureId = hopper.TextureId
 		tool.RequiresHandle = false
 
-		-- Convert scripts to tool API
-		for _, decendantScript in hopper:GetDescendants() do
-			if decendantScript:IsA("Script") or decendantScript:IsA("ModuleScript") then
-				const content = decendantScript.Source
+		-- Copy scripts to new tool
+		for _, child in hopper:GetChildren() do
+			const clone = child:Clone()
+			clone.Parent = tool
+		end
+
+		-- Convert scripts on the tool only
+		for _, descendantScript in tool:GetDescendants() do
+			if descendantScript:IsA("Script") or descendantScript:IsA("ModuleScript") then
+				const content = descendantScript.Source
 				local newContent, selectedCount =
 					content:gsub("%s*%.%s*[sS]elected%s*:%s*[cC]onnect%s*%(", ".Equipped:Connect(")
 				local deselectedCount
 				newContent, deselectedCount =
 					newContent:gsub("%s*%.%s*[dD]eselected%s*:%s*[cC]onnect%s*%(", ".Unequipped:Connect(")
 				if selectedCount > 0 or deselectedCount > 0 then
-					decendantScript.Source = newContent
+					descendantScript.Source = newContent
 				end
 			end
-		end
-
-		-- Copy scripts to new tool
-		for _, child in hopper:GetChildren() do
-			const clone = child:Clone()
-			clone.Parent = tool
 		end
 
 		tool.Parent = hopper.Parent
