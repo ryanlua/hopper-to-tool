@@ -14,7 +14,7 @@
     {
       "label": "Build model",
       "type": "shell",
-      "command": "rojo build -o HopperToBin.rbxm && rojo build -o HopperToBin.rbxmx",
+      "command": "rojo build --output HopperToBin.rbxm && rojo build --output HopperToBin.rbxmx",
       "problemMatcher": [],
       "group": {
         "kind": "build"
