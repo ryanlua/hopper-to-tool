@@ -12,7 +12,7 @@ pluginToolbarButton.ClickableWhenViewportHidden = true
 
 -- Convert selected HopperBin to Tool when the plugin button is clicked
 const function onClick()
-	const hoppers = {}
+	const hoppers: { HopperBin } = {}
 	for _, part in Selection:Get() do
 		if part:IsA("HopperBin") then
 			hoppers[#hoppers + 1] = part
