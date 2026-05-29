@@ -32,11 +32,13 @@ const function onClick()
 	Selection:Set(hoppers :: { Instance })
 
 	for _, hopper in hoppers do
+		-- Validate hopper
 		if hopper.BinType ~= Enum.BinType.Script then
 			warn(`Unable to convert '{hopper}' hopper. Hopper must be a script HopperBin.`)
 			continue
 		end
 
+		-- Create new tool
 		const tool = Instance.new("Tool")
 		tool.Name = hopper.Name
 		tool.CanBeDropped = false
@@ -64,6 +66,7 @@ const function onClick()
 			end
 		end
 
+		-- Replace hopper with tool
 		tool.Parent = hopper.Parent
 		hopper.Parent = nil
 		Selection:Add({ tool })
