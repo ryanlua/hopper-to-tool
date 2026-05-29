@@ -12,7 +12,6 @@ pluginToolbarButton.ClickableWhenViewportHidden = true
 
 -- Convert selected HopperBin to Tool when the plugin button is clicked
 const function onClick()
-	print("Converting selected HopperBin to Tool...")
 	const hoppers: { HopperBin } = {}
 	for _, part in Selection:Get() do
 		if part:IsA("HopperBin") then
@@ -33,7 +32,6 @@ const function onClick()
 	Selection:Set(hoppers)
 
 	for _, hopper in hoppers do
-		print(`Converting '{hopper}' hopper...`)
 		if hopper.BinType ~= Enum.BinType.Script then
 			warn(`Unable to convert '{hopper}' hopper. Hopper must be a script HopperBin.`)
 			continue
@@ -67,7 +65,6 @@ const function onClick()
 		tool.Parent = hopper.Parent
 		hopper.Parent = nil
 		Selection:Add({ tool })
-		print(`Converted '{hopper}' hopper to '{tool}' tool.`)
 	end
 
 	ChangeHistoryService:FinishRecording(recording, Enum.FinishRecordingOperation.Commit)
