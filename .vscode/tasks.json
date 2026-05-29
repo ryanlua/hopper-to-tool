@@ -15,6 +15,9 @@
       "label": "Build model",
       "type": "shell",
       "command": "rojo build --output HopperToBin.rbxm && rojo build --output HopperToBin.rbxmx",
+      "windows": {
+        "command": "rojo build --output HopperToBin.rbxm; rojo build --output HopperToBin.rbxmx"
+      },
       "problemMatcher": [],
       "group": {
         "kind": "build"
