@@ -29,7 +29,7 @@ const function onClick()
 		return
 	end
 
-	Selection:Set(hoppers)
+	Selection:Set(hoppers :: { Instance })
 
 	for _, hopper in hoppers do
 		if hopper.BinType ~= Enum.BinType.Script then
