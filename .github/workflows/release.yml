@@ -1,0 +1,53 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Install Rokit toolchain
+        uses: CompeyDev/setup-rokit@v0.2.1
+      - name: Build Rojo project
+        run: |
+          rojo build package.project.json --output HopperToTool.rbxm
+          rojo build package.project.json --output HopperToTool.rbxmx
+      - name: Archive build files
+        uses: actions/upload-artifact@v7
+        with:
+          name: HopperToTool
+          path: |
+            *.rbxm
+            *.rbxmx
+          if-no-files-found: error
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Download build files
+        uses: actions/download-artifact@v8
+        with:
+          name: HopperToTool
+      - name: Create release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            *.rbxm
+            *.rbxmx
+          generate_release_notes: true
+      - name: Publish to Roblox
+        uses: ryanlua/update-roblox-asset@v0.1.0
+        with:
+          api-key: ${{ secrets.OPEN_CLOUD_API_KEY }}
+          asset-id: 127755570108720
+          file: HopperToTool.rbxm
