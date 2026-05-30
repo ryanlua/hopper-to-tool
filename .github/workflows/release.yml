@@ -18,8 +18,8 @@ jobs:
         uses: CompeyDev/setup-rokit@v0.2.1
       - name: Build Rojo project
         run: |
-          rojo build package.project.json --output HopperToTool.rbxm
-          rojo build package.project.json --output HopperToTool.rbxmx
+          rojo build --output HopperToTool.rbxm
+          rojo build --output HopperToTool.rbxmx
       - name: Archive build files
         uses: actions/upload-artifact@v7
         with:
