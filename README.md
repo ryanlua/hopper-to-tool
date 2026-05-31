@@ -11,7 +11,7 @@ Roblox Studio plugin to help migrate from deprecated [HopperBin](https://create.
   * `HopperBin.Selected` → `Tool.Equipped`
   * `HopperBin.Deselected` → `Tool.Unequipped`
 
-Supports shortcuts and undo/redo. Plugin button is only enabled when a supported instance is selected. Converted instances are selected after conversion. Works to convert HopperBin instances relying internal scripts.
+Supports shortcuts and undo/redo. Plugin button is only enabled when a supported instance is selected. Converted instances are selected after conversion.
 
 ## Usage
 
