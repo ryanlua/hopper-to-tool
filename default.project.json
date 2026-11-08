@@ -1,6 +1,6 @@
 {
   "name": "HopperToTool",
   "tree": {
-    "$path": "src/init.plugin.luau"
+    "$path": "src"
   }
 }
